@@ -1,8 +1,13 @@
-# Environment
+# Environment — never commit real env files or secret templates
 .env
 .env.*
+.env.local
+.env.*.local
 *.env
-!.env.example
+backend/.env
+frontend/.env
+.env.example
+backend/.env.example
 
 # Python
 __pycache__/

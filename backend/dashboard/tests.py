@@ -9,7 +9,7 @@ from rest_framework.test import APITestCase
 from authentication.models import CustomUser, Organisation
 from marketplace.models import Category, Product, Supplier
 
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = 'LocalTestPass1!'
 
 
 @override_settings(

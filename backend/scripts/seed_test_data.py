@@ -14,7 +14,7 @@ django.setup()
 from authentication.models import CustomUser, Organisation  # noqa: E402
 from marketplace.models import Category, Product, ProductBatch, Supplier  # noqa: E402
 
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = os.environ.get('SEED_TEST_PASSWORD', 'LocalTestPass1!')
 
 HOSPITAL_EMAIL = 'hospital.test@medicarehub.test'
 SUPPLIER_EMAIL = 'supplier.test@medicarehub.test'
@@ -144,7 +144,8 @@ if __name__ == '__main__':
     admin = get_or_create_admin_user()
     product = seed_products(supplier)
     print('Seed complete:')
-    print(f'  Hospital: {hospital.email} / {VALID_PASSWORD}')
-    print(f'  Supplier: {supplier_user.email} / {VALID_PASSWORD}')
-    print(f'  Admin:    {admin.email} / {VALID_PASSWORD}')
+    print(f'  Hospital: {hospital.email}')
+    print(f'  Supplier: {supplier_user.email}')
+    print(f'  Admin:    {admin.email}')
+    print('  Password: set via SEED_TEST_PASSWORD env var (see script default if unset)')
     print(f'  Product:  {product.name} ({product.id})')

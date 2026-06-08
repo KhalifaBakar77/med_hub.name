@@ -11,7 +11,7 @@ from authentication.models import CustomUser, Organisation
 from marketplace.models import Category, Product, ProductBatch, Supplier
 from orders.models import BatchReservation, Order, OrderItem
 
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = 'LocalTestPass1!'
 
 
 @override_settings(

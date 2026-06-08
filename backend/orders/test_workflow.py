@@ -11,7 +11,7 @@ from marketplace.models import Category, Product, Supplier
 from orders.models import Order, OrderItem
 
 
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = 'LocalTestPass1!'
 
 
 @override_settings(

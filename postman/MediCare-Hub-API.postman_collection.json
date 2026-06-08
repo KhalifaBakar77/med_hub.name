@@ -1,13 +1,15 @@
 {
   "info": {
     "name": "MediCare Hub API",
-    "description": "Complete API collection for MediCare Hub Django REST backend.\n\nVariables:\n- base_url: http://127.0.0.1:8000\n- access_token: JWT access token (set after login)\n- refresh_token: stored in HttpOnly cookie automatically",
+    "description": "Complete API collection for MediCare Hub Django REST backend.\n\nVariables:\n- base_url: http://127.0.0.1:8000\n- access_token: JWT access token (set after login)\n- refresh_token: stored in HttpOnly cookie automatically\n- test_email / test_password: set locally after running seed_test_data.py (do not commit real passwords)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     { "key": "base_url", "value": "http://127.0.0.1:8000" },
     { "key": "access_token", "value": "" },
-    { "key": "refresh_token", "value": "" }
+    { "key": "refresh_token", "value": "" },
+    { "key": "test_email", "value": "hospital.test@medicarehub.test" },
+    { "key": "test_password", "value": "" }
   ],
   "auth": {
     "type": "bearer",
@@ -25,7 +27,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"new.hospital@example.com\",\n  \"password\": \"SecurePass1!\",\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Hospital\",\n  \"role\": \"HOSPITAL\",\n  \"organisation_name\": \"City Clinic\",\n  \"organisation_type\": \"HOSPITAL\"\n}"
+              "raw": "{\n  \"email\": \"new.hospital@example.com\",\n  \"password\": \"{{test_password}}\",\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Hospital\",\n  \"role\": \"HOSPITAL\",\n  \"organisation_name\": \"City Clinic\",\n  \"organisation_type\": \"HOSPITAL\"\n}"
             },
             "url": "{{base_url}}/api/v1/auth/register/"
           },
@@ -52,7 +54,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"hospital.test@medicarehub.test\",\n  \"password\": \"SecurePass1!\"\n}"
+              "raw": "{\n  \"email\": \"{{test_email}}\",\n  \"password\": \"{{test_password}}\"\n}"
             },
             "url": "{{base_url}}/api/v1/auth/login/"
           },

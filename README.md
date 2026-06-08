@@ -39,8 +39,7 @@ med_hub/
 │   └── medicare_hub/ # settings & URLs
 ├── frontend/         # React SPA
 ├── postman/          # API collection
-├── docs/             # documentation
-├── .env.example      # environment template
+├── docs/             # documentation (incl. ENVIRONMENT_VARIABLES.md)
 └── README.md
 ```
 
@@ -65,8 +64,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 pip install -r requirements.txt
-cp .env.example .env
-# Edit .env with your local values (use placeholders from .env.example)
+# Create backend/.env locally — see docs/ENVIRONMENT_VARIABLES.md
 
 python manage.py migrate
 python scripts/seed_test_data.py   # optional: seed demo users & products
@@ -80,7 +78,7 @@ API base URL: `http://127.0.0.1:8000/api/v1/`
 ```bash
 cd frontend
 npm install
-cp .env.example .env    # optional; defaults work with Vite proxy
+# optional: create frontend/.env — see docs/ENVIRONMENT_VARIABLES.md
 npm run dev
 ```
 
@@ -88,7 +86,7 @@ App URL: `http://localhost:5173`
 
 ## Environment Variables
 
-Copy `.env.example` to `backend/.env` and configure:
+Create `backend/.env` locally and configure:
 
 | Variable | Description |
 |----------|-------------|
@@ -99,15 +97,11 @@ Copy `.env.example` to `backend/.env` and configure:
 | `JWT_ACCESS_TOKEN_LIFETIME_MINUTES` | Access token TTL |
 | Payment / email keys | Optional; leave empty for local dev |
 
-See `backend/.env.example` for the full list. **Never commit `.env` files.**
+See `docs/ENVIRONMENT_VARIABLES.md` for the full variable list. **Never commit `.env` files.**
 
-### Seeded test accounts (after `seed_test_data.py`)
+### Local test data
 
-| Role | Email | Password |
-|------|-------|----------|
-| Hospital | `hospital.test@medicarehub.test` | `SecurePass1!` |
-| Supplier | `supplier.test@medicarehub.test` | `SecurePass1!` |
-| Admin | `admin.test@medicarehub.test` | `SecurePass1!` |
+Run `python scripts/seed_test_data.py` locally to create demo accounts. Credentials are printed to your terminal only and are not stored in this repository.
 
 ## Running Tests
 
@@ -164,6 +158,4 @@ This project is provided as an MVP for educational and collaboration purposes. A
 
 ## Security
 
-- Do not commit `.env`, database files, or API keys
-- Rotate `SECRET_KEY` and JWT settings for production
-- Use HTTPS and secure cookies in production (`medicare_hub.settings.production`)
+See [SECURITY.md](SECURITY.md). Do not commit `.env`, database files, or API keys. Rotate `SECRET_KEY` and JWT settings for production.

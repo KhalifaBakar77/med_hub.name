@@ -203,7 +203,7 @@
 
 ## 10. End-to-End Flow (API)
 
-1. Login as `hospital.test@medicarehub.test` / `SecurePass1!` — **PASS**
+1. Login as seeded hospital test user (password set locally via `SEED_TEST_PASSWORD`) — **PASS**
 2. GET `/auth/me/` — **PASS**
 3. GET `/marketplace/products/` — **PASS** (1 product seeded)
 4. Search `?search=Amoxicillin` — **PASS**
@@ -236,13 +236,8 @@
 
 ---
 
-## Test Credentials (seeded)
+## Test Credentials (local only)
 
-| Role | Email | Password |
-|------|-------|----------|
-| Hospital | hospital.test@medicarehub.test | SecurePass1! |
-| Supplier | supplier.test@medicarehub.test | SecurePass1! |
-| Admin | admin.test@medicarehub.test | SecurePass1! |
+Run `python backend/scripts/seed_test_data.py` to create demo accounts. Set `SEED_TEST_PASSWORD` locally if you use a custom password. Credentials are not documented in this repository.
 
-**Seed command:** `python backend/scripts/seed_test_data.py`  
 **Test command:** `python backend/scripts/api_test_suite.py`

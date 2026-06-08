@@ -9,7 +9,7 @@ from rest_framework.test import APITestCase
 
 from authentication.models import AuditLog, AuthToken, CustomUser, Organisation, UserSession
 
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = 'LocalTestPass1!'
 
 
 class CustomUserModelTests(TestCase):

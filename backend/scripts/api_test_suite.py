@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 import uuid
 from dataclasses import dataclass, field
@@ -12,7 +13,7 @@ import requests
 
 BASE_URL = 'http://127.0.0.1:8000'
 API = f'{BASE_URL}/api/v1'
-VALID_PASSWORD = 'SecurePass1!'
+VALID_PASSWORD = os.environ.get('SEED_TEST_PASSWORD', 'LocalTestPass1!')
 HOSPITAL_EMAIL = 'hospital.test@medicarehub.test'
 SUPPLIER_EMAIL = 'supplier.test@medicarehub.test'
 ADMIN_EMAIL = 'admin.test@medicarehub.test'
